@@ -16,7 +16,7 @@ option(ENABLE_OPEN_MP "Build programs with suppot of OpenMP." OFF)
 option(ENABLE_MPI_BUILD "Build some programs with MPI parralelization." OFF)
 option(ENABLE_CLANG_TIDY "Enable clang tidy at compilation" OFF)
 option(ENABLE_BUILD_DOC "Enable the documentation build (doxygen)" OFF)
-option(ENABLE_BUILD_TEST "Enable the documentation build (doxygen)" OFF)
+option(ENABLE_BUILD_TEST "Enable the documentation build (doxygen)" ON)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -152,7 +152,7 @@ endif(ENABLE_MPI_BUILD)
 if(ENABLE_BUILD_TEST)
     message("Fetching DocTest lib ...")
     FetchContent_MakeAvailable(DocTest)
-    add_subdirectory(tests/)
+    add_subdirectory(tests/testsMath)
 endif(ENABLE_BUILD_TEST)
 
 # -----------------------------------------------------------------------------

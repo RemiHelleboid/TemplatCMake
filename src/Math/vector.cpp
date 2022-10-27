@@ -36,18 +36,12 @@ Vector3D Vector3D::cross(const Vector3D& v) const {
 
 double Vector3D::dot(const Vector3D& v) const { return m_x * v.m_x + m_y * v.m_y + m_z * v.m_z; }
 
-double Vector3D::triple_product(const Vector3D& v1, const Vector3D& v2) const {
-    return m_x * (m_y * v2.m_z - m_z * v2.m_y) + m_y * (m_z * v2.m_x - m_x * v2.m_z) +
-           m_z * (m_x * v2.m_y - m_y * v2.m_x);
-}
+double triple_scalar_product(const Vector3D& v1, const Vector3D& v2, const Vector3D& v3) { return v1.dot(v2.cross(v3)); }
 
-Vector3D& Vector3D::operator+=(const Vector3D& v) {
-    m_x += v.m_x;
-    m_y += v.m_y;
-    m_z += v.m_z;
-    return *this;
-}
+Vector3D Vector3D::operator-() const { return Vector3D(-m_x, -m_y, -m_z); }
 
+Vector3D operator+(const Vector3D& v1, const Vector3D& v2) { return Vector3D(v1.m_x + v2.m_x, v1.m_y + v2.m_y, v1.m_z + v2.m_z); }
 
+Vector3D operator-(const Vector3D& v1, const Vector3D& v2) { return Vector3D(v1.m_x - v2.m_x, v1.m_y - v2.m_y, v1.m_z - v2.m_z); }
 
 }  // namespace math

@@ -45,23 +45,14 @@ class Vector3D {
 
     Vector3D cross(const Vector3D& v) const;
     double   dot(const Vector3D& v) const;
-    double   triple_product(const Vector3D& v1, const Vector3D& v2) const;
 
     void randomize_uniform(double min, double max);
     void randomize_uniform(double min_x, double max_x, double min_y, double max_y, double min_z, double max_z);
     void randomize_normal(double mean, double std_dev);
 
     Vector3D& operator=(const Vector3D& v) = default;
-    Vector3D& operator+=(const Vector3D& v);
-    Vector3D& operator-=(const Vector3D& v);
-    Vector3D& operator*=(double a);
-    Vector3D& operator/=(double a);
 
     Vector3D operator-() const;
-    Vector3D operator+(const Vector3D& v) const;
-    Vector3D operator-(const Vector3D& v) const;
-    Vector3D operator*(double a) const;
-    Vector3D operator/(double a) const;
 
     double   operator*(const Vector3D& v) const;
     Vector3D operator^(const Vector3D& v) const;
@@ -69,6 +60,11 @@ class Vector3D {
     bool operator==(const Vector3D& v) const;
     bool operator!=(const Vector3D& v) const;
 
+    friend double        triple_scalar_product(const Vector3D& v1, const Vector3D& v2, const Vector3D& v3);
+    friend Vector3D      operator+(const Vector3D& v1, const Vector3D& v2);
+    friend Vector3D      operator-(const Vector3D& v1, const Vector3D& v2);
+    friend Vector3D      operator*(double a, const Vector3D& v);
+    friend Vector3D      operator/(double a, const Vector3D& v);
     friend std::ostream& operator<<(std::ostream& os, const Vector3D& v);
 };
 
